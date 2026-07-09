@@ -34,11 +34,11 @@ public class GimnasioConectado {
      */
     public static void mostrarConsejo() {
         // A. Crea el HttpClient (el mesero)
-        httpClient cliente = httpClient.newhttpClient();
+        HttpClient cliente = HttpClient.newHttpClient();
         // B. Construye la HttpRequest usando el patrón Builder (con .newBuilder(), .uri(), .GET() y .build())
-        httpRequest pedido = httpClient.newBuilder();
+        HttpClient pedido = HttpClient.newBuilder();
         .uri(URI.create(https://api.adviceslip.com/advice));
-        .Get;
+        .Get
         .build;
 
         // C. Usa un bloque try-catch para enviar la petición con cliente.send(...)
