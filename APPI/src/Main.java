@@ -15,7 +15,6 @@ public class GimnasioConectado {
         System.out.println("=== BIENVENIDO AL GIMNASIO CONECTADO ===");
 
         // 1. PASO API: Llamamos al método para mostrar el consejo motivacional
-
         mostrarConsejo();
 
         // 2. PASO LÓGICA: Pedir el nombre del miembro por consola
@@ -35,13 +34,20 @@ public class GimnasioConectado {
      */
     public static void mostrarConsejo() {
         // A. Crea el HttpClient (el mesero)
-
+        httpClient cliente = httpClient.newhttpClient();
         // B. Construye la HttpRequest usando el patrón Builder (con .newBuilder(), .uri(), .GET() y .build())
+        httpRequest pedido = httpClient.newBuilder();
+        .uri(URI.create(https://api.adviceslip.com/advice));
+        .Get;
+        .build;
 
         // C. Usa un bloque try-catch para enviar la petición con cliente.send(...)
         //    e imprime en pantalla la respuesta con .body()
         try {
             // Escribe tu código de envío aquí...
+            HttpResponse<String> respuesta = cliente.send(pedido, HttpResponse.BodyHandlers.ofString());
+            System.out.println("Consejo del dia");
+            System.out.println(respuesta.body());
 
         } catch (Exception e) {
             System.out.println("No se pudo conectar a la API, pero ¡da tu mejor esfuerzo hoy!");
@@ -55,13 +61,13 @@ public class GimnasioConectado {
     public static void guardarEnArchivo(String nombreMiembro) {
         // A. Abre el bloque try-with-resources creando el BufferedWriter y el FileWriter
         //    Ejemplo: try (BufferedWriter escritor = new BufferedWriter(new FileWriter("gimnasio.txt", true)))
-        try {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter("gimnasio.txt", true))) {
             // B. Escribe el nombre del miembro en el archivo
-
+            bw.write(nombreMiembro);
+            bw.newLine();
             // C. Haz un salto de línea (.newLine()) para que el siguiente miembro quede abajo
-
             // D. Muestra un mensaje en consola confirmando que se guardó en el disco duro
-
+            System.out.println("Guardando el nombre del nuevo miembro");
         } catch (IOException e) {
             System.out.println("Error crítico al escribir en el archivo: " + e.getMessage());
         }
